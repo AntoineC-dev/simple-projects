@@ -1,4 +1,4 @@
-export type Operations = "/" | "*" | "+" | "-";
+export type Operations = "÷" | "x" | "+" | "-";
 
 export interface StoreState {
   output: {

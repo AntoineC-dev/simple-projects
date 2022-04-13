@@ -5,9 +5,9 @@ export const evaluate = (params: StoreState["output"]) => {
   const currentOperand = parseFloat(params.currentOperand!);
   if (isNaN(previousOperand) || isNaN(currentOperand)) return "";
   switch (params.operation) {
-    case "/":
+    case "÷":
       return (previousOperand / currentOperand).toString();
-    case "*":
+    case "x":
       return (previousOperand * currentOperand).toString();
     case "-":
       return (previousOperand - currentOperand).toString();

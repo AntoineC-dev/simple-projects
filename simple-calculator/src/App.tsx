@@ -22,11 +22,11 @@ function App() {
       <button type="button" onClick={removeDigit}>
         DEL
       </button>
-      <OperationButton operation="/" />
+      <OperationButton operation="÷" />
       <DigitButton digit="1" />
       <DigitButton digit="2" />
       <DigitButton digit="3" />
-      <OperationButton operation="*" />
+      <OperationButton operation="x" />
       <DigitButton digit="4" />
       <DigitButton digit="5" />
       <DigitButton digit="6" />
