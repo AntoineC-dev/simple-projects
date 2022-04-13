@@ -4,10 +4,18 @@
   box-sizing: border-box;
 }
 
+:root {
+  --background: rgb(34, 37, 45);
+  --background-actions: rgb(41, 45, 54);
+  --background-buttons: rgb(39, 43, 51);
+  --background-buttons-hover: rgb(39, 43, 51, 0.75);
+  --text: white;
+  --text-light: rgba(255, 255, 255, 0.75);
+}
+
 body {
   margin: 0;
-  background: rgb(2, 0, 36);
-  background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+  background: var(--background);
 }
 
 .span-two {
@@ -15,48 +23,63 @@ body {
 }
 
 .calculator {
-  display: grid;
   min-height: 100vh;
-  grid-template-columns: repeat(4, 6rem);
-  grid-template-rows: minmax(8rem, auto) repeat(5, 6rem);
-  place-content: center;
+  display: grid;
+  grid-template-rows: 1fr auto;
 }
 
 .calculator__output {
-  grid-column: 1/-1;
-  background-color: rgba(0, 0, 0, 0.75);
-  border: 1px solid white;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  justify-content: center;
-  padding: 0.75rem;
+  justify-content: flex-end;
+  padding: 1.5rem;
   word-wrap: break-word;
   word-break: break-all;
 }
 
 .calculator__output .previous-operand {
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 1.5rem;
-}
-
-.calculator__output .current-operand {
-  color: white;
+  color: var(--text-light);
   font-size: 2.5rem;
 }
 
-.calculator > button {
+.calculator__output .current-operand {
+  color: var(--text);
+  font-size: 3.5rem;
+}
+
+.calculator__actions {
+  background-color: var(--background-actions);
+  border-radius: 1.5rem 1.5rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+.calculator__actions > button {
   cursor: pointer;
-  font-size: 2rem;
-  border: 1px solid white;
-  outline: none;
-  background-color: rgba(255, 255, 255, 0.75);
+  font-size: 1.75rem;
+  border: none;
+  background-color: var(--background-buttons);
+  border-radius: 1rem;
+  padding: 1rem 1.5rem;
+  color: var(--text);
 }
 
-.calculator > button:hover {
-  background-color: rgba(255, 255, 255, 0.95);
+.calculator__actions > button:hover,
+.calculator__actions > button:focus {
+  background-color: var(--background-buttons-hover);
 }
 
-.calculator > button:focus {
-  background-color: rgba(255, 255, 255, 0.85);
+@media (min-width: 480px) {
+  .calculator {
+    place-content: center;
+    grid-template-rows: minmax(8rem, auto) auto;
+  }
+
+  .calculator__actions {
+    border-radius: 1.5rem;
+  }
 }
