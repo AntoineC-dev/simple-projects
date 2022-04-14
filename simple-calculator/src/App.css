@@ -4,7 +4,11 @@
   box-sizing: border-box;
 }
 
-:root {
+body {
+  margin: 0;
+}
+
+.dark {
   --background: rgb(34, 37, 45);
   --background-actions: rgb(41, 45, 54);
   --background-buttons: rgb(39, 43, 51);
@@ -13,9 +17,13 @@
   --text-light: rgba(255, 255, 255, 0.75);
 }
 
-body {
-  margin: 0;
-  background: var(--background);
+.light {
+  --background: white;
+  --background-actions: white;
+  --background-buttons: white;
+  --background-buttons-hover: whitesmoke;
+  --text: rgb(54, 57, 64);
+  --text-light: rgba(54, 57, 64, 0.75);
 }
 
 .span-two {
@@ -23,9 +31,22 @@ body {
 }
 
 .calculator {
+  background-color: var(--background);
   min-height: 100vh;
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: auto 1fr auto;
+}
+
+.toggle-theme {
+  justify-self: center;
+  cursor: pointer;
+  font-size: 1rem;
+  background-color: var(--background-buttons);
+  border: 1px solid rgba(39, 43, 51, 0.1);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin-block: 1.5rem;
+  color: var(--text);
 }
 
 .calculator__output {
@@ -41,15 +62,18 @@ body {
 .calculator__output .previous-operand {
   color: var(--text-light);
   font-size: 2.5rem;
+  max-width: fit-content;
 }
 
 .calculator__output .current-operand {
   color: var(--text);
   font-size: 3.5rem;
+  max-width: fit-content;
 }
 
 .calculator__actions {
   background-color: var(--background-actions);
+  border: 1px solid rgba(39, 43, 51, 0.1);
   border-radius: 1.5rem 1.5rem 0 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -61,8 +85,8 @@ body {
 .calculator__actions > button {
   cursor: pointer;
   font-size: 1.75rem;
-  border: none;
   background-color: var(--background-buttons);
+  border: 1px solid rgba(39, 43, 51, 0.1);
   border-radius: 1rem;
   padding: 1rem 1.5rem;
   color: var(--text);
@@ -76,7 +100,7 @@ body {
 @media (min-width: 480px) {
   .calculator {
     place-content: center;
-    grid-template-rows: minmax(8rem, auto) auto;
+    grid-template-rows: auto minmax(14rem, auto) auto;
   }
 
   .calculator__actions {
