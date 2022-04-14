@@ -1,16 +1,22 @@
 import "./App.css";
 import { DigitButton, OperationButton } from "./components";
-import { useClear, useOutput, useRemoveDigit, useSetResult } from "./controllers";
+import { useClear, useOutput, useRemoveDigit, useSetResult, useTheme, useToggleTheme } from "./controllers";
 import { formatOperand } from "./helpers";
 import arrowBackWhite from "./assets/arrow_back_white.png";
+import arrowBackBlack from "./assets/arrow_back_black.png";
 
 function App() {
   const { currentOperand, operation, previousOperand } = useOutput();
+  const theme = useTheme();
+  const toggleTheme = useToggleTheme();
   const clear = useClear();
   const setResult = useSetResult();
   const removeDigit = useRemoveDigit();
   return (
-    <div className="calculator">
+    <div className={`calculator ${theme}`}>
+      <button type="button" className="toggle-theme" onClick={toggleTheme}>
+        {`${theme === "dark" ? "Light" : "Dark"} theme`}
+      </button>
       <div className="calculator__output">
         <div className="previous-operand">
           {formatOperand(previousOperand)} {operation}
@@ -22,7 +28,7 @@ function App() {
           AC
         </button>
         <button type="button" onClick={removeDigit}>
-          <img src={arrowBackWhite} alt="" style={{ width: "1rem" }} />
+          <img src={theme === "dark" ? arrowBackWhite : arrowBackBlack} alt="" style={{ width: "1rem" }} />
         </button>
         <OperationButton operation="÷" />
         <DigitButton digit="1" />
