@@ -1,6 +1,14 @@
 import { StoreState } from "../types";
 import { useStore } from "./store.controllers";
 
+// Theme
+const themeSelector = (state: StoreState) => state.theme;
+const toggleThemeSelector = (state: StoreState) => state.toggleTheme;
+
+export const useTheme = () => useStore(themeSelector);
+export const useToggleTheme = () => useStore(toggleThemeSelector);
+
+// Calculator
 const outputSelector = (state: StoreState) => state.output;
 const clearSelector = (state: StoreState) => state.clear;
 const addDigitSelector = (state: StoreState) => state.addDigit;

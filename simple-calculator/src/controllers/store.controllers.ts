@@ -10,6 +10,8 @@ const defaultOutput: StoreState["output"] = {
 };
 
 export const useStore = create<StoreState>((set) => ({
+  theme: "dark",
+  toggleTheme: () => set((state) => ({ theme: state.theme === "dark" ? "light" : "dark" })),
   output: defaultOutput,
   clear: () => set({ output: defaultOutput }),
   addDigit: (digit) =>
