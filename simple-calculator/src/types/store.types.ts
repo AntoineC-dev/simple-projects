@@ -1,6 +1,9 @@
 export type Operations = "÷" | "x" | "+" | "-";
+export type Themes = "dark" | "light";
 
 export interface StoreState {
+  theme: Themes;
+  toggleTheme: () => void;
   output: {
     previousOperand: string | null;
     currentOperand: string | null;
